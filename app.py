@@ -1,4 +1,3 @@
-import spaces
 import random
 import argparse
 import glob
@@ -136,7 +135,6 @@ def get_duration(model_name, tab, mid_seq, continuation_state, continuation_sele
     return t + 5
 
 
-@spaces.GPU(duration=get_duration)
 def run(model_name, tab, mid_seq, continuation_state, continuation_select, instruments, drum_kit, bpm, time_sig,
         key_sig, mid, midi_events, reduce_cc_st, remap_track_channel, add_default_instr, remove_empty_channels,
         seed, seed_rand, gen_events, temp, top_p, top_k, allow_cc):
@@ -530,3 +528,4 @@ if __name__ == "__main__":
                        [output_midi_seq, output_continuation_state, js_msg], queue=False)
     app.queue().launch(server_port=opt.port, share=opt.share, ssr_mode=False)
     thread_pool.shutdown()
+
