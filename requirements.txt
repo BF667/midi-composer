@@ -1,0 +1,12 @@
+--extra-index-url https://download.pytorch.org/whl/cu124
+Pillow
+numpy
+torch
+onnxruntime-gpu
+peft>=0.13.0
+transformers>=4.36
+gradio==5.9.1
+pydantic==2.8.2
+pyfluidsynth
+tqdm
+huggingface_hub
