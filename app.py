@@ -1,4 +1,4 @@
-import random
+import random, logging
 import argparse
 import glob
 import json
@@ -20,6 +20,9 @@ from midi_synthesizer import MidiSynthesizer
 
 MAX_SEED = np.iinfo(np.int32).max
 in_space = os.getenv("SYSTEM") == "spaces"
+
+for l in ["transformers", "matplotlib"]:
+    logging.getLogger(l).setLevel(logging.ERROR)
 
 
 @torch.inference_mode()
@@ -528,4 +531,5 @@ if __name__ == "__main__":
                        [output_midi_seq, output_continuation_state, js_msg], queue=False)
     app.queue().launch(server_port=opt.port, share=opt.share, ssr_mode=False)
     thread_pool.shutdown()
+
 
