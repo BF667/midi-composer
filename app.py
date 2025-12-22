@@ -21,7 +21,7 @@ from midi_synthesizer import MidiSynthesizer
 MAX_SEED = np.iinfo(np.int32).max
 in_space = os.getenv("SYSTEM") == "spaces"
 
-for l in ["transformers", "matplotlib"]:
+for l in ["transformers", "torch", "matplotlib"]:
     logging.getLogger(l).setLevel(logging.ERROR)
 
 
@@ -401,7 +401,7 @@ if __name__ == "__main__":
             models[f"{name} with {lora_name} lora"] = model
 
     load_javascript()
-    app = gr.Blocks(theme="Thatguy099/Sonix")
+    app = gr.Blocks(theme="NeoPy/Soft")
     with app:
         gr.Markdown("<h1 style='text-align: center; margin-bottom: 1rem'>Midi Composer</h1>")
         gr.Markdown("![Visitors](https://api.visitorbadge.io/api/visitors?path=skytnt.midi-composer&style=flat)\n\n"
@@ -531,5 +531,6 @@ if __name__ == "__main__":
                        [output_midi_seq, output_continuation_state, js_msg], queue=False)
     app.queue().launch(server_port=opt.port, share=opt.share, ssr_mode=False)
     thread_pool.shutdown()
+
 
 
