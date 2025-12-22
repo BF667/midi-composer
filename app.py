@@ -14,9 +14,9 @@ import tqdm
 from huggingface_hub import hf_hub_download
 from transformers import DynamicCache
 
-import MIDI
-from midi_model import MIDIModel, MIDIModelConfig
-from midi_synthesizer import MidiSynthesizer
+import midcomposer.MIDI
+from midcomposer.midi_model import MIDIModel, MIDIModelConfig
+from midcomposer.midi_synthesizer import MidiSynthesizer
 
 MAX_SEED = np.iinfo(np.int32).max
 in_space = os.getenv("SYSTEM") == "spaces"
@@ -531,6 +531,7 @@ if __name__ == "__main__":
                        [output_midi_seq, output_continuation_state, js_msg], queue=False)
     app.queue().launch(server_port=opt.port, share=opt.share, ssr_mode=False)
     thread_pool.shutdown()
+
 
 
 
