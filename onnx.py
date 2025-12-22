@@ -13,9 +13,9 @@ import onnxruntime as rt
 import tqdm
 from huggingface_hub import hf_hub_download
 
-import MIDI
-from midi_synthesizer import MidiSynthesizer
-from midi_tokenizer import MIDITokenizer
+import midcomposer.MIDI
+from midcomposer.midi_synthesizer import MidiSynthesizer
+from midcomposer.midi_tokenizer import MIDITokenizer
 
 MAX_SEED = np.iinfo(np.int32).max
 in_space = os.getenv("SYSTEM") == "spaces"
